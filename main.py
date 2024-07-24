@@ -13,6 +13,14 @@ screen.title("🐍🐍🐍 Snake Game 🐍🐍🐍")
 # Create snake from class Snake
 snake = Snake()
 
+# Listen to key strokes
+
+screen.listen()
+screen.onkey(key="Up", fun=snake.up)
+screen.onkey(key="Down", fun=snake.down)
+screen.onkey(key="Left", fun=snake.left)
+screen.onkey(key="Right", fun=snake.right)
+
 
 # when the game is on ---> graphic runs an update, sleep for 0,2 second 
 # ONLY WHEN all the segments have moved forward
@@ -20,8 +28,8 @@ game_is_on = True
 
 while game_is_on:
 
-    screen.update()
-    time.sleep(0.2)
+    screen.update() # Refresh the screen
+    time.sleep(0.1) # Delay the refresh to control the frequency of the refresh
     snake.move()
-
+ 
 screen.exitonclick()

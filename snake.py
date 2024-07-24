@@ -4,12 +4,18 @@ from turtle import Turtle
 STARTING_SEGMENTS = [(0, 0), (-20, 0), (-40, 0)]
 # create constant of move
 MOVE_DISTANCE = 20
+# Create directions
+UP = 90
+DOWN = 270
+LEFT = 180
+RIGHT = 0
 
 class Snake:
 
     def __init__(self):
         self.snake_body = [] # Create a snake body --> 3 white squares line starts at (0,0)
         self.create_snake()
+        self.head = self.snake_body[0]
 
     # Create 3 different segment of a snake
     def create_snake(self):
@@ -32,4 +38,24 @@ class Snake:
             new_segment_x = self.snake_body[seg_num - 1].xcor()
             new_segment_y = self.snake_body[seg_num - 1].ycor()
             self.snake_body[seg_num].goto(new_segment_x, new_segment_y) #move 3rd segment to 2nd segment coordinates
-        self.snake_body[0].forward(MOVE_DISTANCE) # move 1st segment forward       
+        self.head.forward(MOVE_DISTANCE) # move 1st segment forward    
+
+    # Restriction on snake movements
+    # If the snake is moving toward one direction, it CANNOT turn the opposite way
+
+    def up(self):
+        if self.head.heading() != DOWN: 
+            self.head.setheading(UP)   
+
+    def down(self):
+        if self.head.heading() != UP: 
+            self.head.setheading(DOWN)   
+    
+    def left(self):
+        if self.head.heading() != RIGHT: 
+            self.head.setheading(LEFT)    
+        
+    def right(self):
+        if self.head.heading() != LEFT: 
+            self.head.setheading(RIGHT)    
+    
