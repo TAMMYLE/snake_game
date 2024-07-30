@@ -20,12 +20,20 @@ class Snake:
     # Create 3 different segment of a snake
     def create_snake(self):
         for position in STARTING_SEGMENTS:
-            snake = Turtle(shape="square")
-            snake.color("white")
-            snake.pensize(20)
-            snake.penup()
-            snake.goto(position)
-            self.snake_body.append(snake)
+            self.add_segment(position)
+
+    # Add new segment to the snake
+    def add_segment(self, position):
+        snake = Turtle(shape="square")
+        snake.color("white")
+        snake.pensize(20)
+        snake.penup()
+        snake.goto(position)
+        self.snake_body.append(snake)
+    
+    # extend the snake segment
+    def extend(self):
+        self.add_segment(self.snake_body[-1].position()) # add new segment to the same position as the last segment
 
     # Move the snake forward automatically
     # setup snake movements:

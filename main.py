@@ -49,6 +49,7 @@ while game_is_on:
         food.refresh()
         point.clear()
         point.update_score()
+        snake.extend() # snake extend 1 segment
 
     # Detect collisions with walls
     # If snake hits wall --> end game
