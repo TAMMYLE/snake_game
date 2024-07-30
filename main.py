@@ -59,12 +59,14 @@ while game_is_on:
 
     # Detect collision with tail
     # if the head collides with any segment of the tail -- Game over
-    for segment in snake.snake_body:
+    for segment in snake.snake_body[1:]:   # use slicing to omit the snake head
         
-        if segment == snake.head: # bypass the head
-            pass
-        elif snake.head.distance(segment) < 10:
+        """ if segment == snake.head: # bypass the head
+            pass """
+        if snake.head.distance(segment) < 10:
             game_is_on = False
             point.end_game()
+
+
  
 screen.exitonclick()
