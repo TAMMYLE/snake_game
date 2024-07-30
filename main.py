@@ -44,11 +44,17 @@ while game_is_on:
     
     # Detect collisions with food --> use distance method (turtle)
     # If snake collides w food --> update score
-    
+
     if snake.head.distance(food) < 15: #check the distance bt food and the snake head is less than 15
         food.refresh()
         point.clear()
         point.update_score()
+
+    # Detect collisions with walls
+    # If snake hits wall --> end game
+    if snake.head.xcor() > 295 or snake.head.xcor() < -295 or snake.head.ycor() > 295 or snake.head.ycor() < -295:
+        game_is_on = False
+        point.end_game()
 
  
 screen.exitonclick()
